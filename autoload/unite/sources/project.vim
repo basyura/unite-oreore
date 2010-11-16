@@ -39,7 +39,7 @@ function! s:unite_source.gather_candidates(args, context)
         \ '[fnamemodify(v:val , ":t") , v:val]')
   return map(list, '{
         \ "abbr"   : v:val[0],
-        \ "word"   : v:val[1],
+        \ "word"   : v:val[0],
         \ "source" : "project",
         \ "kind"   : "cdable",
         \ "action__directory": v:val[1],
