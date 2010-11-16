@@ -51,22 +51,22 @@ let s:action_table = {}
 " cd src
 let s:action_table.src = {'description' : 'cd src'}
 function! s:action_table.src.func(candidate)
-  execute 'cd ' . a:candidate.word . '/src'
+  execute 'cd ' . a:candidate.action__directory . '/src'
 endfunction
 " cd ContextRoot
 let s:action_table.context_root = {'description' : 'cd ContextRoot'}
 function! s:action_table.context_root.func(candidate)
-  execute 'cd ' . a:candidate.word . '/ContextRoot'
+  execute 'cd ' . a:candidate.action__directory . '/ContextRoot'
 endfunction
 " cd scripts
 let s:action_table.scripts = {'description' : 'cd scripts'}
 function! s:action_table.scripts.func(candidate)
-  execute 'cd ' . a:candidate.word . '/ContextRoot/scripts'
+  execute 'cd ' . a:candidate.action__directory . '/ContextRoot/scripts'
 endfunction
 " cd jsp
 let s:action_table.jsp = {'description' : 'cd jsp'}
 function! s:action_table.jsp.func(candidate)
-  execute 'cd ' . a:candidate.word . '/ContextRoot/jsp'
+  execute 'cd ' . a:candidate.action__directory . '/ContextRoot/jsp'
 endfunction
 
 " sub dir
@@ -77,7 +77,7 @@ for s:v in g:unite_project_sub_dirs
       let self.path = a:1
       return self.path
     else
-      execute 'cd '. a:candidate.word . '/' . self.path
+      execute 'cd '. a:candidate.action__directory . '/' . self.path
     endif
   endfunction
   call s:action_table[s:v['action']].func(0, s:v['path'])
